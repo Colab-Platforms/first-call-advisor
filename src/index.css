@@ -113,15 +113,22 @@
 
 @layer components {
   .hero-section {
-    @apply relative bg-hero-bg min-h-screen overflow-hidden;
+    @apply relative min-h-screen overflow-hidden;
+    background-color: hsl(var(--hero-bg));
   }
 
   .hero-overlay {
-    @apply absolute inset-0 bg-gradient-to-r from-hero-overlay/95 via-hero-overlay/80 to-transparent z-10;
+    @apply absolute inset-0 z-10;
+    background: linear-gradient(to right, hsl(var(--hero-overlay) / 0.95), hsl(var(--hero-overlay) / 0.80), transparent);
   }
 
   .nav-item {
-    @apply relative text-text-light/80 hover:text-text-light transition-colors duration-300 text-sm font-medium tracking-wide;
+    @apply relative transition-colors duration-300 text-sm font-medium tracking-wide;
+    color: hsl(var(--text-light) / 0.8);
+  }
+
+  .nav-item:hover {
+    color: hsl(var(--text-light));
   }
 
   .nav-item-numbered {
@@ -129,15 +136,29 @@
   }
 
   .nav-item-number {
-    @apply text-xs text-text-muted-light mb-0.5;
+    @apply text-xs mb-0.5;
+    color: hsl(var(--text-muted-light));
   }
 
   .btn-primary {
-    @apply bg-accent-red text-text-light px-8 py-4 font-semibold text-sm uppercase tracking-wider hover:bg-accent-red-hover transition-all duration-300 rounded-sm;
+    @apply px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 rounded-sm;
+    background-color: hsl(var(--accent-red));
+    color: hsl(var(--text-light));
+  }
+
+  .btn-primary:hover {
+    background-color: hsl(var(--accent-red-hover));
   }
 
   .btn-outline-light {
-    @apply border border-text-light/30 text-text-light px-8 py-4 font-semibold text-sm uppercase tracking-wider hover:bg-text-light hover:text-hero-bg transition-all duration-300 rounded-sm;
+    @apply px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 rounded-sm;
+    border: 1px solid hsl(var(--text-light) / 0.3);
+    color: hsl(var(--text-light));
+  }
+
+  .btn-outline-light:hover {
+    background-color: hsl(var(--text-light));
+    color: hsl(var(--hero-bg));
   }
 
   .section-title {
@@ -153,31 +174,43 @@
   }
 
   .service-card-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-hero-bg/90 via-hero-bg/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500;
+    @apply absolute inset-0 transition-opacity duration-500;
+    background: linear-gradient(to top, hsl(var(--hero-bg) / 0.9), hsl(var(--hero-bg) / 0.5), transparent);
+    opacity: 0.6;
+  }
+
+  .service-card-overlay:hover {
+    opacity: 0.8;
   }
 
   .stat-number {
-    @apply text-5xl md:text-6xl font-serif font-bold text-accent-red;
+    @apply text-5xl md:text-6xl font-serif font-bold;
+    color: hsl(var(--accent-red));
   }
 
   .footer-section {
-    @apply bg-section-dark text-text-light py-16;
+    @apply py-16;
+    background-color: hsl(var(--section-dark));
+    color: hsl(var(--text-light));
   }
 
   .hero-tab {
-    @apply relative flex-1 py-6 px-4 border-t border-text-light/20 cursor-pointer transition-all duration-300;
+    @apply relative flex-1 py-6 px-4 cursor-pointer transition-all duration-300;
+    border-top: 1px solid hsl(var(--text-light) / 0.2);
   }
 
   .hero-tab.active {
-    @apply border-t-2 border-accent-red;
+    border-top: 2px solid hsl(var(--accent-red));
   }
 
   .hero-tab-number {
-    @apply text-accent-red font-semibold text-sm;
+    @apply font-semibold text-sm;
+    color: hsl(var(--accent-red));
   }
 
   .hero-tab-title {
-    @apply text-text-light text-sm mt-1;
+    @apply text-sm mt-1;
+    color: hsl(var(--text-light));
   }
 }
 
