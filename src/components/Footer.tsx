@@ -1,0 +1,121 @@
+import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Instagram, ArrowUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <footer id="contact" className="footer-section">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          {/* Company Info */}
+          <div>
+            <a href="#" className="inline-block mb-6">
+              <span className="text-2xl font-serif font-bold text-text-light tracking-tight">
+                FIRST<span className="text-accent-red">CALL</span>
+              </span>
+            </a>
+            <p className="text-text-muted-light mb-6 leading-relaxed">
+              Your trusted partner for strategic business advisory and consulting services. 
+              Delivering excellence since 1998.
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-accent-red flex items-center justify-center transition-colors">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-accent-red flex items-center justify-center transition-colors">
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-accent-red flex items-center justify-center transition-colors">
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-accent-red flex items-center justify-center transition-colors">
+                <Instagram className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-lg font-serif font-semibold text-text-light mb-6">Quick Links</h4>
+            <ul className="space-y-3">
+              {["About Us", "Our Services", "Case Studies", "Blog", "Contact"].map((link) => (
+                <li key={link}>
+                  <a href="#" className="text-text-muted-light hover:text-text-light hover:pl-2 transition-all">
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-lg font-serif font-semibold text-text-light mb-6">Contact Us</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-accent-red flex-shrink-0 mt-0.5" />
+                <span className="text-text-muted-light">
+                  123 Business Avenue, Suite 500<br />
+                  New York, NY 10001
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-accent-red flex-shrink-0" />
+                <a href="tel:+1-800-555-0199" className="text-text-muted-light hover:text-text-light transition-colors">
+                  +1-800-555-0199
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-accent-red flex-shrink-0" />
+                <a href="mailto:contact@firstcalladvisory.com" className="text-text-muted-light hover:text-text-light transition-colors">
+                  contact@firstcalladvisory.com
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h4 className="text-lg font-serif font-semibold text-text-light mb-6">Newsletter</h4>
+            <p className="text-text-muted-light mb-4">
+              Subscribe to our newsletter for the latest insights and updates.
+            </p>
+            <div className="flex gap-2">
+              <Input 
+                type="email" 
+                placeholder="Your email" 
+                className="bg-white/5 border-white/10 text-text-light placeholder:text-text-muted-light focus:border-accent-red"
+              />
+              <Button className="bg-accent-red hover:bg-accent-red/90 px-6">
+                →
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-text-muted-light text-sm">
+            © 2024 First Call Advisory. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6 text-sm text-text-muted-light">
+            <a href="#" className="hover:text-text-light transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-text-light transition-colors">Terms of Service</a>
+          </div>
+          <button
+            onClick={scrollToTop}
+            className="w-10 h-10 rounded-sm bg-accent-red hover:bg-accent-red/90 flex items-center justify-center transition-colors"
+          >
+            <ArrowUp className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

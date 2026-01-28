@@ -1,12 +1,36 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import TopBar from "@/components/TopBar";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/ServicesSection";
+import AboutSection from "@/components/AboutSection";
+import StatsSection from "@/components/StatsSection";
+import CTASection from "@/components/CTASection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen">
+      {/* Header Area */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <TopBar />
+        <Navbar />
       </div>
+
+      {/* Hero with top padding for fixed header */}
+      <div className="pt-[120px]">
+        <HeroSection />
+      </div>
+
+      {/* Main Content */}
+      <main>
+        <ServicesSection />
+        <AboutSection />
+        <StatsSection />
+        <CTASection />
+      </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
