@@ -6,18 +6,18 @@ const TopBar = () => {
       <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-3">
         <div className="flex items-center gap-6 text-sm">
           <a href="tel:+1-800-555-0199" className="flex items-center gap-2 text-text-muted-light hover:text-text-light transition-colors">
-            <Phone className="w-4 h-4 text-accent-red" />
+            <Phone className="w-4 h-4 text-accent-primary" />
             <span>+1-800-555-0199</span>
           </a>
           <div className="flex items-center gap-2 text-text-muted-light">
-            <Clock className="w-4 h-4 text-accent-red" />
+            <Clock className="w-4 h-4 text-accent-primary" />
             <span>Mon-Fri : 9:00 - 18:00</span>
           </div>
         </div>
         
         <div className="flex items-center gap-6">
           <a href="mailto:contact@firstcalladvisory.com" className="flex items-center gap-2 text-text-muted-light hover:text-text-light transition-colors text-sm">
-            <Mail className="w-4 h-4 text-accent-red" />
+            <Mail className="w-4 h-4 text-accent-primary" />
             <span>contact@firstcalladvisory.com</span>
           </a>
           

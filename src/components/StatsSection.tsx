@@ -94,7 +94,7 @@ const StatItem = ({
   return (
     <div className="text-center">
       <div className="flex items-baseline justify-center gap-1">
-        <span className="text-xs text-accent-red font-semibold mr-2">
+        <span className="text-xs text-accent-primary font-semibold mr-2">
           0{index + 1}
         </span>
         <span className="stat-number">

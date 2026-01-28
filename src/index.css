@@ -7,44 +7,45 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 20% 10%;
+    --foreground: 220 25% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 220 25% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 220 25% 10%;
 
-    --primary: 0 78% 50%;
+    --primary: 215 80% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 96%;
-    --secondary-foreground: 220 20% 10%;
+    --secondary: 215 25% 96%;
+    --secondary-foreground: 220 25% 10%;
 
-    --muted: 220 15% 96%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 215 25% 96%;
+    --muted-foreground: 215 15% 50%;
 
-    --accent: 220 15% 96%;
-    --accent-foreground: 220 20% 10%;
+    --accent: 215 25% 96%;
+    --accent-foreground: 220 25% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 0 78% 50%;
+    --border: 215 25% 90%;
+    --input: 215 25% 90%;
+    --ring: 215 80% 45%;
 
     --radius: 0.25rem;
 
-    /* Custom tokens */
-    --hero-bg: 220 25% 12%;
-    --hero-overlay: 220 25% 8%;
-    --accent-red: 0 78% 50%;
-    --accent-red-hover: 0 78% 45%;
+    /* Custom tokens - Deep Blue Theme */
+    --hero-bg: 215 35% 12%;
+    --hero-overlay: 215 35% 8%;
+    --accent-primary: 215 80% 45%;
+    --accent-primary-hover: 215 80% 38%;
+    --accent-gold: 40 85% 55%;
     --text-light: 0 0% 100%;
-    --text-muted-light: 220 15% 75%;
-    --section-dark: 220 25% 10%;
-    --section-light: 220 15% 98%;
+    --text-muted-light: 215 20% 75%;
+    --section-dark: 215 35% 10%;
+    --section-light: 215 25% 98%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -57,33 +58,33 @@
   }
 
   .dark {
-    --background: 220 25% 8%;
+    --background: 215 35% 8%;
     --foreground: 0 0% 95%;
 
-    --card: 220 25% 12%;
+    --card: 215 35% 12%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 220 25% 12%;
+    --popover: 215 35% 12%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 0 78% 50%;
+    --primary: 215 80% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 25% 18%;
+    --secondary: 215 30% 18%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 220 25% 18%;
-    --muted-foreground: 220 15% 65%;
+    --muted: 215 30% 18%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 220 25% 18%;
+    --accent: 215 30% 18%;
     --accent-foreground: 0 0% 95%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 25% 20%;
-    --input: 220 25% 20%;
-    --ring: 0 78% 50%;
+    --border: 215 30% 20%;
+    --input: 215 30% 20%;
+    --ring: 215 80% 55%;
     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -142,12 +143,12 @@
 
   .btn-primary {
     @apply px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300 rounded-sm;
-    background-color: hsl(var(--accent-red));
+    background-color: hsl(var(--accent-primary));
     color: hsl(var(--text-light));
   }
 
   .btn-primary:hover {
-    background-color: hsl(var(--accent-red-hover));
+    background-color: hsl(var(--accent-primary-hover));
   }
 
   .btn-outline-light {
@@ -166,7 +167,8 @@
   }
 
   .section-subtitle {
-    @apply text-sm uppercase tracking-[0.2em] text-muted-foreground font-medium mb-4;
+    @apply text-sm uppercase tracking-[0.2em] font-medium mb-4;
+    color: hsl(var(--accent-primary));
   }
 
   .service-card {
@@ -185,7 +187,7 @@
 
   .stat-number {
     @apply text-5xl md:text-6xl font-serif font-bold;
-    color: hsl(var(--accent-red));
+    color: hsl(var(--accent-gold));
   }
 
   .footer-section {
@@ -200,17 +202,26 @@
   }
 
   .hero-tab.active {
-    border-top: 2px solid hsl(var(--accent-red));
+    border-top: 2px solid hsl(var(--accent-primary));
   }
 
   .hero-tab-number {
     @apply font-semibold text-sm;
-    color: hsl(var(--accent-red));
+    color: hsl(var(--accent-primary));
   }
 
   .hero-tab-title {
     @apply text-sm mt-1;
     color: hsl(var(--text-light));
+  }
+
+  .testimonial-card {
+    @apply bg-card rounded-lg p-8 shadow-lg transition-all duration-300;
+  }
+
+  .testimonial-card:hover {
+    @apply shadow-xl;
+    transform: translateY(-4px);
   }
 }
 
@@ -223,12 +234,12 @@
     background-color: hsl(var(--hero-overlay));
   }
 
-  .bg-accent-red {
-    background-color: hsl(var(--accent-red));
+  .bg-accent-primary {
+    background-color: hsl(var(--accent-primary));
   }
 
-  .bg-accent-red-hover {
-    background-color: hsl(var(--accent-red-hover));
+  .bg-accent-primary-hover {
+    background-color: hsl(var(--accent-primary-hover));
   }
 
   .bg-section-dark {
@@ -247,12 +258,16 @@
     color: hsl(var(--text-muted-light));
   }
 
-  .text-accent-red {
-    color: hsl(var(--accent-red));
+  .text-accent-primary {
+    color: hsl(var(--accent-primary));
   }
 
-  .border-accent-red {
-    border-color: hsl(var(--accent-red));
+  .text-accent-gold {
+    color: hsl(var(--accent-gold));
+  }
+
+  .border-accent-primary {
+    border-color: hsl(var(--accent-primary));
   }
 
   .animate-fade-in {
