@@ -15,7 +15,7 @@ const Footer = () => {
           <div>
             <a href="#" className="inline-block mb-6">
               <span className="text-2xl font-serif font-bold text-text-light tracking-tight">
-                FIRST<span className="text-accent-red">CALL</span>
+                FIRST<span className="text-accent-primary">CALL</span>
               </span>
             </a>
             <p className="text-text-muted-light mb-6 leading-relaxed">
@@ -23,16 +23,16 @@ const Footer = () => {
               Delivering excellence since 1998.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-accent-red flex items-center justify-center transition-colors">
+              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-primary flex items-center justify-center transition-colors">
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-accent-red flex items-center justify-center transition-colors">
+              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-primary flex items-center justify-center transition-colors">
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-accent-red flex items-center justify-center transition-colors">
+              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-primary flex items-center justify-center transition-colors">
                 <Twitter className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-accent-red flex items-center justify-center transition-colors">
+              <a href="#" className="w-10 h-10 rounded-sm bg-white/5 hover:bg-primary flex items-center justify-center transition-colors">
                 <Instagram className="w-4 h-4" />
               </a>
             </div>
@@ -57,20 +57,20 @@ const Footer = () => {
             <h4 className="text-lg font-serif font-semibold text-text-light mb-6">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-accent-red flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-accent-primary flex-shrink-0 mt-0.5" />
                 <span className="text-text-muted-light">
                   123 Business Avenue, Suite 500<br />
                   New York, NY 10001
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-accent-red flex-shrink-0" />
+                <Phone className="w-5 h-5 text-accent-primary flex-shrink-0" />
                 <a href="tel:+1-800-555-0199" className="text-text-muted-light hover:text-text-light transition-colors">
                   +1-800-555-0199
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-accent-red flex-shrink-0" />
+                <Mail className="w-5 h-5 text-accent-primary flex-shrink-0" />
                 <a href="mailto:contact@firstcalladvisory.com" className="text-text-muted-light hover:text-text-light transition-colors">
                   contact@firstcalladvisory.com
                 </a>
@@ -88,9 +88,9 @@ const Footer = () => {
               <Input 
                 type="email" 
                 placeholder="Your email" 
-                className="bg-white/5 border-white/10 text-text-light placeholder:text-text-muted-light focus:border-accent-red"
+                className="bg-white/5 border-white/10 text-text-light placeholder:text-text-muted-light focus:border-primary"
               />
-              <Button className="bg-accent-red hover:bg-accent-red/90 px-6">
+              <Button className="bg-primary hover:bg-primary/90 px-6">
                 →
               </Button>
             </div>
@@ -108,7 +108,7 @@ const Footer = () => {
           </div>
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 rounded-sm bg-accent-red hover:bg-accent-red/90 flex items-center justify-center transition-colors"
+            className="w-10 h-10 rounded-sm bg-primary hover:bg-primary/90 flex items-center justify-center transition-colors"
           >
             <ArrowUp className="w-5 h-5" />
           </button>

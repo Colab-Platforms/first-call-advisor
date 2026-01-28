@@ -52,7 +52,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-20 container mx-auto px-6 pt-20 pb-8 min-h-[calc(100vh-180px)] flex flex-col justify-center">
         <div className="max-w-3xl">
-          <p className="text-accent-red text-sm uppercase tracking-[0.3em] font-medium mb-4 animate-fade-in">
+          <p className="text-accent-primary text-sm uppercase tracking-[0.3em] font-medium mb-4 animate-fade-in">
             {heroSlides[activeTab].subtitle}
           </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-text-light leading-tight mb-6 animate-slide-up">
@@ -63,7 +63,7 @@ const HeroSection = () => {
           </p>
           <a
             href="#about"
-            className="inline-flex items-center gap-3 text-text-light font-medium hover:text-accent-red transition-colors group animate-slide-up"
+            className="inline-flex items-center gap-3 text-text-light font-medium hover:text-accent-primary transition-colors group animate-slide-up"
             style={{ animationDelay: "0.4s" }}
           >
             <span>Learn More About Us</span>

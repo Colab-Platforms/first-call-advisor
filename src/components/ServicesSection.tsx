@@ -64,8 +64,8 @@ const ServicesSection = () => {
 
               {/* Content */}
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-sm bg-accent-red/10 group-hover:bg-accent-red flex items-center justify-center mb-6 transition-all duration-500">
-                  <service.icon className="w-8 h-8 text-accent-red group-hover:text-white transition-colors" />
+                <div className="w-16 h-16 rounded-sm bg-primary/10 group-hover:bg-primary flex items-center justify-center mb-6 transition-all duration-500">
+                  <service.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
                 </div>
 
                 <h3 className="text-xl font-serif font-semibold mb-3 text-foreground group-hover:text-text-light transition-colors">
@@ -78,7 +78,7 @@ const ServicesSection = () => {
 
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-accent-red font-medium text-sm hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:gap-3 transition-all"
                 >
                   Learn More
                   <span className="text-lg">→</span>

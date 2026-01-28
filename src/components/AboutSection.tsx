@@ -15,7 +15,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div>
-            <p className="section-subtitle text-accent-red">Complete Honesty & Transparency</p>
+            <p className="section-subtitle">Complete Honesty & Transparency</p>
             <h2 className="section-title text-foreground mb-6">
               Our Vision and Values
             </h2>
@@ -28,7 +28,7 @@ const AboutSection = () => {
             <ul className="space-y-4 mb-10">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-accent-red flex-shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
                   <span className="text-foreground">{feature}</span>
                 </li>
               ))}
@@ -41,7 +41,7 @@ const AboutSection = () => {
           <div className="relative">
             <div className="bg-hero-bg rounded-sm p-10 relative overflow-hidden">
               {/* Decorative element */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent-red/20 rounded-bl-full" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-bl-full" />
               
               <div className="relative z-10">
                 <p className="text-text-muted-light text-sm uppercase tracking-wider mb-2">
@@ -55,14 +55,14 @@ const AboutSection = () => {
                   to build our services and solutions in strategy, consulting, and digital 
                   transformation.
                 </p>
-                <a href="#" className="text-accent-red font-medium inline-flex items-center gap-2 hover:gap-3 transition-all">
+                <a href="#" className="text-accent-primary font-medium inline-flex items-center gap-2 hover:gap-3 transition-all">
                   Learn More <span>→</span>
                 </a>
               </div>
             </div>
 
             {/* Floating accent */}
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-accent-red rounded-sm hidden lg:block" />
+            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-primary rounded-sm hidden lg:block" />
           </div>
         </div>
       </div>

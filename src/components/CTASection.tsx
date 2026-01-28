@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
   return (
-    <section id="why-us" className="py-24 bg-accent-red relative overflow-hidden">
+    <section id="why-us" className="py-24 bg-primary relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -21,12 +21,12 @@ const CTASection = () => {
             you achieve your business goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-accent-red hover:bg-white/90 px-8 py-6 font-semibold text-sm uppercase tracking-wider rounded-sm transition-all">
+            <Button className="bg-white text-primary hover:bg-white/90 px-8 py-6 font-semibold text-sm uppercase tracking-wider rounded-sm transition-all">
               Schedule Consultation
             </Button>
             <Button 
               variant="outline" 
-              className="border-white/30 text-white hover:bg-white hover:text-accent-red px-8 py-6 font-semibold text-sm uppercase tracking-wider rounded-sm transition-all bg-transparent"
+              className="border-white/30 text-white hover:bg-white hover:text-primary px-8 py-6 font-semibold text-sm uppercase tracking-wider rounded-sm transition-all bg-transparent"
             >
               View Our Services
               <ArrowRight className="w-4 h-4 ml-2" />
