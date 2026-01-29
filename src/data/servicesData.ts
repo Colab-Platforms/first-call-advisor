@@ -185,7 +185,33 @@ export const servicesData: Service[] = [
     slug: "other-services",
     icon: Settings,
     description: "Additional specialized services tailored to meet your unique business requirements and objectives.",
-    subServices: [],
+    subServices: [
+      {
+        title: "Accounting & Taxation",
+        slug: "accounting-taxation",
+        description: "Comprehensive accounting services and tax advisory to ensure accurate financial reporting and tax compliance.",
+      },
+      {
+        title: "Listing Services",
+        slug: "listing-services",
+        description: "Complete support for stock exchange listing processes including IPO preparation, compliance, and regulatory approvals.",
+      },
+      {
+        title: "Insolvency Services",
+        slug: "insolvency-services",
+        description: "Expert guidance on insolvency and bankruptcy proceedings under the Insolvency and Bankruptcy Code (IBC).",
+      },
+      {
+        title: "Revival of Companies",
+        slug: "revival-of-companies",
+        description: "Strategic advisory for company revival, restructuring distressed businesses, and restoration of dormant companies.",
+      },
+      {
+        title: "Startup Services",
+        slug: "startup-services",
+        description: "Specialized services for startups including incorporation, funding assistance, compliance, and growth strategy.",
+      },
+    ],
   },
 ];
 
