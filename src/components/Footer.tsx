@@ -9,8 +9,8 @@ const Footer = () => {
 
   return (
     <footer id="contact" className="footer-section">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-12">
           {/* Company Info */}
           <div>
             <a href="#" className="inline-block mb-6">
@@ -88,9 +88,9 @@ const Footer = () => {
               <Input 
                 type="email" 
                 placeholder="Your email" 
-                className="bg-white/5 border-white/10 text-text-light placeholder:text-text-muted-light focus:border-primary"
+                className="bg-white/5 border-white/10 text-text-light placeholder:text-text-muted-light focus:border-primary flex-1 min-w-0"
               />
-              <Button className="bg-primary hover:bg-primary/90 px-6">
+              <Button className="bg-primary hover:bg-primary/90 px-4 md:px-6 flex-shrink-0">
                 →
               </Button>
             </div>
@@ -98,19 +98,19 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-text-muted-light text-sm">
+        <div className="border-t border-white/10 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-text-muted-light text-xs md:text-sm text-center md:text-left">
             © 2024 First Call Advisory. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-sm text-text-muted-light">
+          <div className="flex items-center gap-4 md:gap-6 text-xs md:text-sm text-text-muted-light">
             <a href="#" className="hover:text-text-light transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-text-light transition-colors">Terms of Service</a>
           </div>
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 rounded-sm bg-primary hover:bg-primary/90 flex items-center justify-center transition-colors"
+            className="w-9 h-9 md:w-10 md:h-10 rounded-sm bg-primary hover:bg-primary/90 flex items-center justify-center transition-colors"
           >
-            <ArrowUp className="w-5 h-5" />
+            <ArrowUp className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         </div>
       </div>

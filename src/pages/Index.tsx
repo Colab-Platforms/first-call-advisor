@@ -17,8 +17,8 @@ const Index = () => {
         <Navbar />
       </div>
 
-      {/* Hero with top padding for fixed header */}
-      <div className="pt-[10px]">
+      {/* Hero with top padding for fixed header - adjusted for TopBar + Navbar height */}
+      <div className="pt-[90px] md:pt-[100px]">
         <HeroSection />
       </div>
 
