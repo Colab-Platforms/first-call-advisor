@@ -1,42 +1,48 @@
-import { TrendingUp, Shield, Users, BarChart3, Target, Briefcase } from "lucide-react";
+import { Building2, TrendingUp, Scale, Shield, Handshake, Settings } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const services = [
   {
-    icon: TrendingUp,
+    icon: Building2,
     number: "01",
-    title: "Strategic Advisory",
-    description: "Navigate complex business challenges with expert guidance and proven strategies.",
+    title: "Corporate Restructuring",
+    description: "Expert guidance on mergers, demergers, capital restructuring, and strategic corporate transformations.",
+    subServices: ["Merger & Amalgamation", "Demerger", "Reduction of Capital", "Capital Restructuring", "Buyback of Shares", "Delisting"]
   },
   {
-    icon: BarChart3,
+    icon: TrendingUp,
     number: "02",
-    title: "Financial Consulting",
-    description: "Optimize your financial performance and achieve sustainable profitability.",
+    title: "Fundraising & Investment",
+    description: "Comprehensive support for all types of fundraising activities and investment structuring.",
+    subServices: ["Foreign Direct Investment (FDI)", "Overseas Direct Investment (ODI)", "Preferential Allotment & Private Placement", "ADR / GDR / FCCB Issues & ECB", "Public Issue / Rights Issue"]
+  },
+  {
+    icon: Scale,
+    number: "03",
+    title: "Advisory and Legal",
+    description: "Strategic advisory and legal support across taxation, transactions, and regulatory compliance.",
+    subServices: ["Taxation Advisory", "Transaction Advisory", "SEBI Regulations Advisory", "Foreign Exchange Laws (FEMA)", "SEBI Notices & Appeals before SAT", "Compounding of Offences", "Income Tax Litigations", "Forensic Audit"]
   },
   {
     icon: Shield,
-    number: "03",
-    title: "Risk Management",
-    description: "Identify and mitigate risks to protect your business assets and reputation.",
-  },
-  {
-    icon: Users,
     number: "04",
-    title: "Human Capital",
-    description: "Build high-performing teams and develop leadership capabilities.",
+    title: "Compliance",
+    description: "Comprehensive compliance management for listed and unlisted companies across all regulatory requirements.",
+    subServices: ["Listed Company Compliances", "Unlisted Company Compliances", "NBFC Compliance", "Due Diligence"]
   },
   {
-    icon: Target,
+    icon: Handshake,
     number: "05",
-    title: "Market Analysis",
-    description: "Gain competitive insights and identify growth opportunities in your market.",
+    title: "Buying & Selling of Companies",
+    description: "End-to-end support for corporate acquisitions, takeovers, and strategic business transactions.",
+    subServices: ["Takeovers", "Slump Sale"]
   },
   {
-    icon: Briefcase,
+    icon: Settings,
     number: "06",
-    title: "M&A Advisory",
-    description: "Expert guidance through mergers, acquisitions, and strategic partnerships.",
+    title: "Other Services",
+    description: "Additional specialized services tailored to meet your unique business requirements and objectives.",
+    subServices: []
   },
 ];
 
@@ -76,9 +82,28 @@ const ServicesSection = () => {
                   {service.description}
                 </p>
 
+                {/* Sub-services list - shown on hover */}
+                {service.subServices.length > 0 && (
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
+                    <ul className="text-sm text-text-muted-light space-y-1">
+                      {service.subServices.slice(0, 3).map((subService, index) => (
+                        <li key={index} className="flex items-center gap-2">
+                          <span className="w-1 h-1 bg-accent-primary rounded-full"></span>
+                          {subService}
+                        </li>
+                      ))}
+                      {service.subServices.length > 3 && (
+                        <li className="text-accent-primary text-xs">
+                          +{service.subServices.length - 3} more services
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )}
+
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-primary group-hover:text-accent-primary font-medium text-sm hover:gap-3 transition-all"
                 >
                   Learn More
                   <span className="text-lg">→</span>

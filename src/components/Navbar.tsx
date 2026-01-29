@@ -1,14 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
 const servicesData = [
@@ -103,57 +95,51 @@ const Navbar = () => {
           {/* Logo */}
           <a href="#" className="flex items-center gap-1">
             <span className="text-2xl font-serif font-bold text-white tracking-tight">
-              FIRST<span className="text-accent-gold">CALL</span>
+              FIRST<span className="text-accent">CALL</span>
             </span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:block">
-            <NavigationMenu>
-              <NavigationMenuList className="gap-1">
-                {servicesData.map((service) => (
-                  <NavigationMenuItem key={service.label}>
-                    {service.subServices ? (
-                      <>
-                        <NavigationMenuTrigger className="bg-transparent text-white/80 hover:text-white hover:bg-white/10 data-[state=open]:bg-white/10 data-[state=open]:text-white text-sm font-medium">
-                          {service.label}
-                        </NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                          <ul className="grid w-[280px] gap-1 p-3 bg-hero-bg border border-white/10">
-                            {service.subServices.map((subService) => (
-                              <li key={subService}>
-                                <NavigationMenuLink asChild>
-                                  <a
-                                    href={service.href}
-                                    className="block select-none rounded-sm p-3 text-sm leading-none no-underline outline-none transition-colors text-white/70 hover:text-white hover:bg-white/10"
-                                  >
-                                    {subService}
-                                  </a>
-                                </NavigationMenuLink>
-                              </li>
-                            ))}
-                          </ul>
-                        </NavigationMenuContent>
-                      </>
-                    ) : (
-                      <NavigationMenuLink asChild>
-                        <a
-                          href={service.href}
-                          className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-                        >
-                          {service.label}
-                        </a>
-                      </NavigationMenuLink>
-                    )}
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
+          <div className="hidden xl:flex items-center gap-1">
+            {servicesData.map((service) => (
+              <div key={service.label} className="relative group">
+                {service.subServices ? (
+                  <>
+                    <button className="bg-transparent text-white/80 hover:text-white hover:bg-white/10 px-4 py-2 text-sm font-medium transition-colors flex items-center gap-1">
+                      {service.label}
+                      <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                    </button>
+                    {/* Individual dropdown positioned relative to its trigger */}
+                    <div className="absolute top-full left-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      <ul className="w-[280px] bg-hero-bg border border-white/10 rounded-md shadow-lg p-3 space-y-1">
+                        {service.subServices.map((subService) => (
+                          <li key={subService}>
+                            <a
+                              href={service.href}
+                              className="block select-none rounded-sm p-3 text-sm leading-none no-underline outline-none transition-colors text-white/70 hover:text-white hover:bg-white/10"
+                            >
+                              {subService}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                ) : (
+                  <a
+                    href={service.href}
+                    className="inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                  >
+                    {service.label}
+                  </a>
+                )}
+              </div>
+            ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden xl:block">
-            <Button className="bg-accent-gold hover:bg-accent-gold/90 text-hero-bg font-semibold">
+            <Button className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold">
               Get Consultation
             </Button>
           </div>
@@ -217,7 +203,7 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              <Button className="bg-accent-gold hover:bg-accent-gold/90 text-hero-bg font-semibold mt-4 w-full">
+              <Button className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold mt-4 w-full">
                 Get Consultation
               </Button>
             </div>
