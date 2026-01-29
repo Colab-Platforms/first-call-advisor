@@ -1,67 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const servicesData = [
-  {
-    label: "Corporate Restructuring",
-    href: "#corporate-restructuring",
-    subServices: [
-      "Merger & Amalgamation",
-      "Demerger",
-      "Reduction of Capital",
-      "Capital Restructuring",
-      "Buyback of Shares",
-      "Delisting",
-    ],
-  },
-  {
-    label: "Fundraising & Investment",
-    href: "#fundraising",
-    subServices: [
-      "Foreign Direct Investment (FDI)",
-      "Overseas Direct Investment (ODI)",
-      "Preferential Allotment & Private Placement",
-      "ADR / GDR / FCCB Issues & ECB",
-      "Public Issue / Rights Issue",
-    ],
-  },
-  {
-    label: "Advisory and Legal",
-    href: "#advisory-legal",
-    subServices: [
-      "Taxation Advisory",
-      "Transaction Advisory",
-      "SEBI Regulations Advisory",
-      "Foreign Exchange Laws (FEMA)",
-      "SEBI Notices & Appeals before SAT",
-      "Compounding of Offences",
-      "Income Tax Litigations",
-      "Forensic Audit",
-    ],
-  },
-  {
-    label: "Compliance",
-    href: "#compliance",
-    subServices: [
-      "Listed Company Compliances",
-      "Unlisted Company Compliances",
-      "NBFC Compliance",
-      "Due Diligence",
-    ],
-  },
-  {
-    label: "Buying & Selling of Companies",
-    href: "#buying-selling",
-    subServices: ["Takeovers", "Slump Sale"],
-  },
-  {
-    label: "Other Services",
-    href: "#other-services",
-    subServices: null, // No dropdown for this one
-  },
-];
+import { servicesData } from "@/data/servicesData";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -93,45 +35,48 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-4 bg-transparent">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-1">
+          <Link to="/" className="flex items-center gap-1">
             <span className="text-2xl font-serif font-bold text-white tracking-tight">
               FIRST<span className="text-accent">CALL</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden xl:flex items-center gap-1">
             {servicesData.map((service) => (
               <div key={service.label} className="relative group">
-                {service.subServices ? (
+                {service.subServices.length > 0 ? (
                   <>
-                    <button className="bg-transparent text-white/80 hover:text-white hover:bg-white/10 px-4 py-2 text-sm font-medium transition-colors flex items-center gap-1">
+                    <Link
+                      to={`/services/${service.slug}`}
+                      className="bg-transparent text-white/80 hover:text-white hover:bg-white/10 px-4 py-2 text-sm font-medium transition-colors flex items-center gap-1 rounded-md"
+                    >
                       {service.label}
                       <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
-                    </button>
-                    {/* Individual dropdown positioned relative to its trigger */}
+                    </Link>
+                    {/* Dropdown */}
                     <div className="absolute top-full left-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                       <ul className="w-[280px] bg-hero-bg border border-white/10 rounded-md shadow-lg p-3 space-y-1">
                         {service.subServices.map((subService) => (
-                          <li key={subService}>
-                            <a
-                              href={service.href}
+                          <li key={subService.slug}>
+                            <Link
+                              to={`/services/${service.slug}/${subService.slug}`}
                               className="block select-none rounded-sm p-3 text-sm leading-none no-underline outline-none transition-colors text-white/70 hover:text-white hover:bg-white/10"
                             >
-                              {subService}
-                            </a>
+                              {subService.title}
+                            </Link>
                           </li>
                         ))}
                       </ul>
                     </div>
                   </>
                 ) : (
-                  <a
-                    href={service.href}
+                  <Link
+                    to={`/services/${service.slug}`}
                     className="inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
                   >
                     {service.label}
-                  </a>
+                  </Link>
                 )}
               </div>
             ))}
@@ -163,7 +108,7 @@ const Navbar = () => {
             <div className="flex flex-col gap-2">
               {servicesData.map((service) => (
                 <div key={service.label}>
-                  {service.subServices ? (
+                  {service.subServices.length > 0 ? (
                     <>
                       <button
                         onClick={() => toggleMobileSubmenu(service.label)}
@@ -179,27 +124,34 @@ const Navbar = () => {
                       </button>
                       {openMobileSubmenu === service.label && (
                         <div className="ml-4 border-l border-white/10 pl-4 animate-fade-in">
+                          <Link
+                            to={`/services/${service.slug}`}
+                            className="block py-2 text-sm text-accent-primary font-medium hover:text-white transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            View All {service.label}
+                          </Link>
                           {service.subServices.map((subService) => (
-                            <a
-                              key={subService}
-                              href={service.href}
+                            <Link
+                              key={subService.slug}
+                              to={`/services/${service.slug}/${subService.slug}`}
                               className="block py-2 text-sm text-white/60 hover:text-white transition-colors"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
-                              {subService}
-                            </a>
+                              {subService.title}
+                            </Link>
                           ))}
                         </div>
                       )}
                     </>
                   ) : (
-                    <a
-                      href={service.href}
+                    <Link
+                      to={`/services/${service.slug}`}
                       className="block py-3 px-2 text-white/80 hover:text-white transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {service.label}
-                    </a>
+                    </Link>
                   )}
                 </div>
               ))}
