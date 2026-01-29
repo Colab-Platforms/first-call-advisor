@@ -27,7 +27,7 @@ const Navbar = () => {
     <nav
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
-        isScrolled
+        isScrolled || isMobileMenuOpen
           ? "bg-hero-bg/98 backdrop-blur-md shadow-lg"
           : "bg-transparent"
       )}
