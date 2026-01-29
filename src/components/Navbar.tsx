@@ -32,7 +32,7 @@ const Navbar = () => {
           : "bg-transparent"
       )}
     >
-      <div className="container mx-auto px-6 py-4 bg-transparent">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-1">
@@ -42,21 +42,21 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-2">
             {servicesData.map((service) => (
               <div key={service.label} className="relative group">
                 {service.subServices.length > 0 ? (
                   <>
                     <Link
                       to={`/services/${service.slug}`}
-                      className="bg-transparent text-white/80 hover:text-white hover:bg-white/10 px-4 py-2 text-sm font-medium transition-colors flex items-center gap-1 rounded-md"
+                      className="bg-transparent text-white/80 hover:text-white hover:bg-white/10 px-4 py-2 text-sm font-medium transition-colors flex items-center gap-1 rounded-md whitespace-nowrap"
                     >
                       {service.label}
                       <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
                     </Link>
                     {/* Dropdown */}
                     <div className="absolute top-full left-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                      <ul className="w-[280px] bg-hero-bg border border-white/10 rounded-md shadow-lg p-3 space-y-1">
+                      <ul className="w-[300px] bg-hero-bg border border-white/10 rounded-md shadow-lg p-3 space-y-1">
                         {service.subServices.map((subService) => (
                           <li key={subService.slug}>
                             <Link
@@ -73,7 +73,7 @@ const Navbar = () => {
                 ) : (
                   <Link
                     to={`/services/${service.slug}`}
-                    className="inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                    className="inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white whitespace-nowrap"
                   >
                     {service.label}
                   </Link>
@@ -84,14 +84,14 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden xl:block">
-            <Button className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold">
+            <Button className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold px-6 py-2 whitespace-nowrap">
               Get Consultation
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="xl:hidden text-white p-2"
+            className="xl:hidden text-white p-2 hover:bg-white/10 rounded-md transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
@@ -104,17 +104,17 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden mt-4 pb-4 border-t border-white/10 pt-4 animate-fade-in">
-            <div className="flex flex-col gap-2">
+          <div className="xl:hidden mt-6 pb-6 border-t border-white/10 pt-6 animate-fade-in">
+            <div className="flex flex-col gap-1">
               {servicesData.map((service) => (
                 <div key={service.label}>
                   {service.subServices.length > 0 ? (
                     <>
                       <button
                         onClick={() => toggleMobileSubmenu(service.label)}
-                        className="flex items-center justify-between w-full py-3 px-2 text-white/80 hover:text-white transition-colors"
+                        className="flex items-center justify-between w-full py-3 px-4 text-white/80 hover:text-white hover:bg-white/10 transition-colors rounded-md"
                       >
-                        <span>{service.label}</span>
+                        <span className="font-medium">{service.label}</span>
                         <ChevronDown
                           className={cn(
                             "w-4 h-4 transition-transform",
@@ -123,10 +123,10 @@ const Navbar = () => {
                         />
                       </button>
                       {openMobileSubmenu === service.label && (
-                        <div className="ml-4 border-l border-white/10 pl-4 animate-fade-in">
+                        <div className="ml-4 border-l-2 border-accent-primary/30 pl-4 mt-2 mb-2 animate-fade-in">
                           <Link
                             to={`/services/${service.slug}`}
-                            className="block py-2 text-sm text-accent-primary font-medium hover:text-white transition-colors"
+                            className="block py-2 px-2 text-sm text-accent-primary font-medium hover:text-white transition-colors rounded"
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
                             View All {service.label}
@@ -135,7 +135,7 @@ const Navbar = () => {
                             <Link
                               key={subService.slug}
                               to={`/services/${service.slug}/${subService.slug}`}
-                              className="block py-2 text-sm text-white/60 hover:text-white transition-colors"
+                              className="block py-2 px-2 text-sm text-white/60 hover:text-white hover:bg-white/5 transition-colors rounded"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
                               {subService.title}
@@ -147,7 +147,7 @@ const Navbar = () => {
                   ) : (
                     <Link
                       to={`/services/${service.slug}`}
-                      className="block py-3 px-2 text-white/80 hover:text-white transition-colors"
+                      className="block py-3 px-4 text-white/80 hover:text-white hover:bg-white/10 transition-colors rounded-md font-medium"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {service.label}
@@ -155,9 +155,11 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              <Button className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold mt-4 w-full">
-                Get Consultation
-              </Button>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <Button className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold w-full py-3">
+                  Get Consultation
+                </Button>
+              </div>
             </div>
           </div>
         )}
