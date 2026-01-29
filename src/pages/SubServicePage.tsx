@@ -1,6 +1,10 @@
 import { useParams, Navigate } from "react-router-dom";
+import { CheckCircle, TrendingUp, Users, Clock } from "lucide-react";
 import ServicePageLayout from "@/components/ServicePageLayout";
+import CaseStudyCard from "@/components/CaseStudyCard";
+import FAQSection from "@/components/FAQSection";
 import { getServiceBySlug, getSubServiceBySlug } from "@/data/servicesData";
+import { getSubServiceContent } from "@/data/subServiceContent";
 
 const SubServicePage = () => {
   const { serviceSlug, subServiceSlug } = useParams<{
@@ -20,6 +24,9 @@ const SubServicePage = () => {
   }
 
   const Icon = service.icon;
+  const content = getSubServiceContent(serviceSlug, subServiceSlug);
+
+  const statIcons = [TrendingUp, Users, CheckCircle, Clock];
 
   return (
     <ServicePageLayout
@@ -32,32 +39,79 @@ const SubServicePage = () => {
         href: `/services/${service.slug}`,
       }}
       content={
-        <div className="prose prose-lg max-w-none">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-6">
-            About {subService.title}
-          </h2>
-          <p className="text-muted-foreground mb-8">{subService.description}</p>
+        <div className="space-y-16">
+          {/* Detailed Description */}
+          <section>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-6">
+              About {subService.title}
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {content.detailedDescription}
+            </p>
+          </section>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
+          {/* Statistics */}
+          <section className="bg-primary/5 rounded-2xl p-8">
+            <h3 className="text-xl font-serif font-semibold text-foreground mb-8 text-center">
+              Our Track Record
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {content.statistics.map((stat, index) => {
+                const StatIcon = statIcons[index % statIcons.length];
+                return (
+                  <div key={index} className="text-center">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <StatIcon className="w-6 h-6 text-primary" />
+                    </div>
+                    <p className="text-3xl font-bold text-primary mb-1">
+                      {stat.value}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{stat.label}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Key Features */}
+          <section>
+            <h3 className="text-xl font-serif font-semibold text-foreground mb-6">
+              What We Offer
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              {content.keyFeatures.map((feature, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-3 p-4 bg-card rounded-lg border border-border hover:border-primary/30 transition-colors"
+                >
+                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-foreground">{feature}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Why Choose Us & Our Process */}
+          <section className="grid md:grid-cols-2 gap-8">
             <div className="bg-card p-6 rounded-lg border border-border">
               <h3 className="text-lg font-semibold text-foreground mb-4">
                 Why Choose Us
               </h3>
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
                   <span>Experienced team with deep domain expertise</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
                   <span>Proven track record of successful transactions</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
                   <span>End-to-end support from planning to execution</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
                   <span>Transparent communication throughout the process</span>
                 </li>
               </ul>
@@ -94,11 +148,26 @@ const SubServicePage = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </section>
+
+          {/* Case Studies */}
+          <section>
+            <h3 className="text-xl font-serif font-semibold text-foreground mb-6">
+              Case Studies
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {content.caseStudies.map((caseStudy, index) => (
+                <CaseStudyCard key={index} {...caseStudy} />
+              ))}
+            </div>
+          </section>
+
+          {/* FAQs */}
+          <FAQSection faqs={content.faqs} />
 
           {/* Related Services */}
           {service.subServices.length > 1 && (
-            <div className="mt-12">
+            <section>
               <h3 className="text-xl font-serif font-semibold text-foreground mb-4">
                 Related Services
               </h3>
@@ -116,7 +185,7 @@ const SubServicePage = () => {
                     </a>
                   ))}
               </div>
-            </div>
+            </section>
           )}
         </div>
       }
