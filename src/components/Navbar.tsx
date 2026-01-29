@@ -3,11 +3,12 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { number: "01", label: "Home", href: "#home" },
-  { number: "02", label: "About Us", href: "#about" },
-  { number: "03", label: "Services", href: "#services" },
-  { number: "04", label: "Why Us", href: "#why-us" },
-  { number: "05", label: "Contact", href: "#contact" },
+  { number: "01", label: "Corporate Restructuring",},
+  { number: "02", label: "Fundraising & Investment",},
+  { number: "03", label: "Advisory and Legal ",},
+  { number: "04", label: "Compliance", },
+  { number: "05", label: "Buying & Selling of Companies",},
+  { number:"06" ,label: "Other Services"}
 ];
 
 const Navbar = () => {
@@ -28,10 +29,10 @@ const Navbar = () => {
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-hero-overlay/98 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
+          : "bg-blue"
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-6 py-4 bg-transparent">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-1">
@@ -45,7 +46,7 @@ const Navbar = () => {
             {navItems.map((item) => (
               <a
                 key={item.number}
-                href={item.href}
+                // href={item.href}
                 className="nav-item nav-item-numbered group"
               >
                 <span className="nav-item-number group-hover:text-accent-red transition-colors">
@@ -77,7 +78,7 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <a
                   key={item.number}
-                  href={item.href}
+                  // href={item.href}
                   className="flex items-center gap-3 text-text-light/80 hover:text-text-light transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
