@@ -54,7 +54,7 @@ const SubServicePage = () => {
           </AnimatedSection>
 
           {/* Statistics */}
-          <AnimatedSection animation="fadeInUp" delay={200}>
+          {/* <AnimatedSection animation="fadeInUp" delay={200}>
             <section className="bg-primary/5 rounded-2xl p-8">
               <h3 className="text-xl font-serif font-semibold text-foreground mb-8 text-center">
                 Our Track Record
@@ -82,7 +82,7 @@ const SubServicePage = () => {
                 })}
               </div>
             </section>
-          </AnimatedSection>
+          </AnimatedSection> */}
 
           {/* Key Features */}
           <AnimatedSection animation="fadeInUp" delay={400}>

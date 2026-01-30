@@ -62,7 +62,7 @@ const AboutSection = () => {
             </div>
 
             {/* Floating accent */}
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-primary rounded-sm hidden lg:block" />
+            {/* <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-primary rounded-sm hidden lg:block" /> */}
           </div>
         </div>
       </div>
