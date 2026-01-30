@@ -50,8 +50,8 @@ const HeroSection = () => {
       <div className="hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-20 container mx-auto px-4 md:px-6 pt-8 md:pt-16 pb-6 md:pb-8 min-h-[calc(100vh-200px)] md:min-h-[calc(100vh-180px)] flex flex-col justify-center">
-        <div className="max-w-3xl">
+      <div className="relative z-20 container mx-auto px-4 md:px-6 lg:px-8 pt-8 md:pt-16 pb-6 md:pb-8 min-h-[calc(100vh-200px)] md:min-h-[calc(100vh-180px)] flex flex-col justify-center">
+        <div className="max-w-3xl -ml-1 md:-ml-2">
           <p className="text-accent-primary text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] font-medium mb-3 md:mb-4 animate-fade-in">
             {heroSlides[activeTab].subtitle}
           </p>
@@ -73,7 +73,7 @@ const HeroSection = () => {
       </div>
 
       {/* Hero Tabs */}
-      <div className="relative z-20 container mx-auto px-4 md:px-6 pb-6 md:pb-8">
+      <div className="relative z-20 container mx-auto px-4 md:px-6 lg:px-8 pb-6 md:pb-8">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-0">
           {heroTabs.map((tab, index) => (
             <button
