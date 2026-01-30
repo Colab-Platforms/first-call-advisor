@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8 py-3 md:py-4 bg-transparent">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-1 -ml-1 md:-ml-2">
+          <Link to="/" className="flex items-center gap-1 -ml-2 md:-ml-4 lg:-ml-6">
             <span className="text-xl md:text-2xl font-serif font-bold text-white tracking-tight">
               FIRST<span className="text-accent">CALL</span>
             </span>
