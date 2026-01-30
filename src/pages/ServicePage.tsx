@@ -2,6 +2,7 @@ import { useParams, Navigate } from "react-router-dom";
 import { Target, Zap, Handshake } from "lucide-react";
 import ServicePageLayout from "@/components/ServicePageLayout";
 import AnimatedSection from "@/components/AnimatedSection";
+import ServiceContactForm from "@/components/ServiceContactForm";
 import { getServiceBySlug } from "@/data/servicesData";
 
 
@@ -231,6 +232,12 @@ const ServicePage = () => {
               </AnimatedSection>
             </>
           )}
+
+          {/* Contact Form Section */}
+          <ServiceContactForm 
+            serviceName={service.label}
+            serviceType="service"
+          />
         </div>
       }
     />

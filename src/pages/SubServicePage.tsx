@@ -4,6 +4,7 @@ import ServicePageLayout from "@/components/ServicePageLayout";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import FAQSection from "@/components/FAQSection";
 import AnimatedSection from "@/components/AnimatedSection";
+import ServiceContactForm from "@/components/ServiceContactForm";
 import { getServiceBySlug, getSubServiceBySlug } from "@/data/servicesData";
 import { getSubServiceContent } from "@/data/subServiceContent";
 
@@ -225,6 +226,12 @@ const SubServicePage = () => {
               </section>
             </AnimatedSection>
           )}
+
+          {/* Contact Form Section */}
+          <ServiceContactForm 
+            serviceName={subService.title}
+            serviceType="subservice"
+          />
         </div>
       }
     />
