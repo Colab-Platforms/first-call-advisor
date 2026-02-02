@@ -10,6 +10,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null);
+  const [logoError, setLogoError] = useState(false);
+  const { openContactForm } = useContactForm();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,8 +101,11 @@ const Navbar = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden xl:block">
-            <Button className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold px-6 py-2 whitespace-nowrap">
+          <div className="hidden xl:block ml-8 lg:ml-12">
+            <Button 
+              onClick={openContactForm}
+              className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold px-6 py-2 whitespace-nowrap"
+            >
               Get Consultation
             </Button>
           </div>
