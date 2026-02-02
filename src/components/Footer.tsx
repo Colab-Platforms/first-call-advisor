@@ -1,20 +1,11 @@
 import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Instagram, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
 
 const Footer = () => {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  const quickLinks = [
-    { name: "About Us", href: "#about" },
-    { name: "Our Services", href: "#services" },
-    { name: "Contact Us", href: "#contact" }
-  ];
 
   return (
     <footer id="contact" className="footer-section">
@@ -51,13 +42,10 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-serif font-semibold text-text-light mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <a 
-                    href={link.href} 
-                    className="text-text-muted-light hover:text-text-light hover:pl-2 transition-all"
-                  >
-                    {link.name}
+              {["About Us", "Our Services", "Case Studies", "Blog", "Contact"].map((link) => (
+                <li key={link}>
+                  <a href="#" className="text-text-muted-light hover:text-text-light hover:pl-2 transition-all">
+                    {link}
                   </a>
                 </li>
               ))}

@@ -10,7 +10,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null);
-
+  const { openContactForm } = useContactForm();
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
@@ -37,35 +37,20 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-1 -ml-2 md:-ml-4 lg:-ml-6">
-            {!logoError ? (
-              <img 
-                className="h-8 md:h-10 w-auto object-contain max-w-none" 
-                src="/first-call-logo.png" 
-                alt="FirstCall Advisory Logo"
-                onError={() => {
-                  console.log('Logo image failed to load, switching to text logo');
-                  setLogoError(true);
-                }}
-                onLoad={() => {
-                  console.log('Logo image loaded successfully');
-                }}
-              />
-            ) : (
-              <span className="text-xl md:text-2xl font-serif font-bold text-white tracking-tight">
-                FIRST<span className="text-accent-gold">CALL</span>
-              </span>
-            )}
+            <span className="text-xl md:text-2xl font-serif font-bold text-white tracking-tight">
+              FIRST<span className="text-accent">CALL</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center gap-1 ml-8 lg:ml-12">
+          <div className="hidden xl:flex items-center gap-2">
             {servicesData.map((service) => (
               <div key={service.label} className="relative group">
                 {service.subServices.length > 0 ? (
                   <>
                     <Link
                       to={`/services/${service.slug}`}
-                      className="bg-transparent text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1 rounded-md whitespace-nowrap"
+                      className="bg-transparent text-white/80 hover:text-white hover:bg-white/10 px-4 py-2 text-sm font-medium transition-colors flex items-center gap-1 rounded-md whitespace-nowrap"
                     >
                       {service.label}
                       <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
@@ -89,7 +74,7 @@ const Navbar = () => {
                 ) : (
                   <Link
                     to={`/services/${service.slug}`}
-                    className="inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white whitespace-nowrap"
+                    className="inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white whitespace-nowrap"
                   >
                     {service.label}
                   </Link>
@@ -100,7 +85,10 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden xl:block">
-            <Button className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold px-6 py-2 whitespace-nowrap">
+            <Button 
+              onClick={openContactForm}
+              className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold px-6 py-2 whitespace-nowrap"
+            >
               Get Consultation
             </Button>
           </div>
