@@ -3,10 +3,10 @@ import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-consulting.jpg";
 
 const heroTabs = [
-  { number: "01 ", title: " Strategic Advisory" },
-  { number: "02 ", title: " Financial Planning" },
-  { number: "03 ", title: " Risk Assessment" },
-  { number: "04 ", title: " Growth Strategy" },
+  { number: "01", title: "Strategic Advisory" },
+  { number: "02", title: "Financial Planning" },
+  { number: "03", title: "Risk Assessment" },
+  { number: "04", title: "Growth Strategy" },
 ];
 
 const heroSlides = [
@@ -14,25 +14,21 @@ const heroSlides = [
     subtitle: "Your First Call For",
     title: "Strategic Business Solutions",
     description: "We help organizations navigate complex challenges and achieve sustainable growth through expert advisory services.",
-    img:"https://images.pexels.com/photos/6285113/pexels-photo-6285113.jpeg",
   },
   {
     subtitle: "Expert Guidance In",
     title: "Financial Excellence",
     description: "Transform your financial strategy with our proven methodologies and industry-leading expertise.",
-    img:"https://images.pexels.com/photos/8761561/pexels-photo-8761561.jpeg"
   },
   {
     subtitle: "Comprehensive",
     title: "Risk Management",
     description: "Identify, assess, and mitigate risks to protect your business and ensure long-term stability.",
-    img:"https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg"
   },
   {
     subtitle: "Accelerating Your",
     title: "Business Growth",
     description: "Unlock new opportunities and scale your business with our strategic growth consulting services.",
-    img:heroImage
   },
 ];
 
@@ -44,7 +40,7 @@ const HeroSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src={heroSlides[activeTab].img ? heroSlides[activeTab].img : heroImage}
+          src={heroImage}
           alt="Business consulting team"
           className="w-full h-full object-cover"
         />
