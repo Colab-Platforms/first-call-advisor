@@ -4,12 +4,13 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { servicesData } from "@/data/servicesData";
+import { useContactForm } from "@/contexts/ContactFormContext";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null);
-
+  const { openContactForm } = useContactForm();
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
@@ -84,7 +85,10 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden xl:block">
-            <Button className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold px-6 py-2 whitespace-nowrap">
+            <Button 
+              onClick={openContactForm}
+              className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold px-6 py-2 whitespace-nowrap"
+            >
               Get Consultation
             </Button>
           </div>
@@ -156,7 +160,13 @@ const Navbar = () => {
                 </div>
               ))}
               <div className="mt-4 pt-4 border-t border-white/10">
-                <Button className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold w-full py-3">
+                <Button 
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    openContactForm();
+                  }}
+                  className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold w-full py-3"
+                >
                   Get Consultation
                 </Button>
               </div>

@@ -1,7 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useContactForm } from "@/contexts/ContactFormContext";
 
 const CTASection = () => {
+  const { openContactForm } = useContactForm();
+
   return (
     <section id="why-us" className="py-24 bg-primary relative overflow-hidden">
       {/* Decorative elements */}
@@ -21,7 +24,10 @@ const CTASection = () => {
             you achieve your business goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-primary hover:bg-white/90 px-8 py-6 font-semibold text-sm uppercase tracking-wider rounded-sm transition-all">
+            <Button 
+              onClick={openContactForm}
+              className="bg-white text-primary hover:bg-white/90 px-8 py-6 font-semibold text-sm uppercase tracking-wider rounded-sm transition-all"
+            >
               Schedule Consultation
             </Button>
             <Button 
