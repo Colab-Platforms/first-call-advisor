@@ -1,8 +1,12 @@
 import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Instagram, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Footer = () => {
+  const [logoError, setLogoError] = useState(false);
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -13,11 +17,26 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-12">
           {/* Company Info */}
           <div>
-            <a href="#" className="inline-block mb-6">
-              <span className="text-2xl font-serif font-bold text-text-light tracking-tight">
-                FIRST<span className="text-accent-primary">CALL</span>
-              </span>
-            </a>
+            <Link to="/" className="inline-block mb-6">
+              {!logoError ? (
+                <img 
+                  className="h-10 md:h-12 w-auto object-contain max-w-none" 
+                  src="/first-call-logo.jpeg" 
+                  alt="First Call Advisory Logo"
+                  onError={() => {
+                    console.log('Footer logo image failed to load, switching to text logo');
+                    setLogoError(true);
+                  }}
+                  onLoad={() => {
+                    console.log('Footer logo image loaded successfully');
+                  }}
+                />
+              ) : (
+                <span className="text-2xl font-serif font-bold text-text-light tracking-tight">
+                  FIRST<span className="text-accent-primary">CALL</span>
+                </span>
+              )}
+            </Link>
             <p className="text-text-muted-light mb-6 leading-relaxed">
               Your trusted partner for strategic business advisory and consulting services. 
               Delivering excellence since 1998.

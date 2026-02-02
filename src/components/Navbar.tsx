@@ -10,6 +10,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null);
+  const [logoError, setLogoError] = useState(false);
   const { openContactForm } = useContactForm();
   useEffect(() => {
     const handleScroll = () => {
@@ -37,9 +38,24 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-1 -ml-2 md:-ml-4 lg:-ml-6">
-            <span className="text-xl md:text-2xl font-serif font-bold text-white tracking-tight">
-              FIRST<span className="text-accent">CALL</span>
-            </span>
+            {!logoError ? (
+              <img 
+                className="h-8 md:h-10 lg:h-12 w-auto object-contain max-w-none" 
+                src="/first-call-logo.jpeg" 
+                alt="First Call Advisory Logo"
+                onError={() => {
+                  console.log('Logo image failed to load, switching to text logo');
+                  setLogoError(true);
+                }}
+                onLoad={() => {
+                  console.log('Logo image loaded successfully');
+                }}
+              />
+            ) : (
+              <span className="text-xl md:text-2xl font-serif font-bold text-white tracking-tight">
+                FIRST<span className="text-accent">CALL</span>
+              </span>
+            )}
           </Link>
 
           {/* Desktop Navigation */}
