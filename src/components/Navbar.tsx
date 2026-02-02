@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { servicesData } from "@/data/servicesData";
 import { useContactForm } from "@/contexts/ContactFormContext";
-import logo from "@/assets/first-call-logo.jpeg";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,14 +36,10 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8 py-3 md:py-4 bg-transparent">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center -ml-2 md:-ml-4 lg:-ml-6">
-            <div className="bg-white rounded-md px-2 py-1">
-              <img 
-                src={logo} 
-                alt="First Call Advisory" 
-                className="h-8 md:h-10 w-auto"
-              />
-            </div>
+          <Link to="/" className="flex items-center gap-1 -ml-2 md:-ml-4 lg:-ml-6">
+            <span className="text-xl md:text-2xl font-serif font-bold text-white tracking-tight">
+              FIRST<span className="text-accent">CALL</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
