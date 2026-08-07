@@ -61,13 +61,21 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-serif font-semibold text-text-light mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {["About Us", "Our Services", "Case Studies", "Blog", "Contact"].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-text-muted-light hover:text-text-light hover:pl-2 transition-all">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link to="/about" className="text-text-muted-light hover:text-text-light hover:pl-2 transition-all">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <a href="#services" className="text-text-muted-light hover:text-text-light hover:pl-2 transition-all">
+                  Our Services
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="text-text-muted-light hover:text-text-light hover:pl-2 transition-all">
+                  Contact Us
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -78,20 +86,20 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent-primary flex-shrink-0 mt-0.5" />
                 <span className="text-text-muted-light">
-                  123 Business Avenue, Suite 500<br />
-                  New York, NY 10001
+                 25/25A, II nd Floor, 327, Nawab Bldg., D.N. Road, Opp. Thomas Cook, Mumbai G.P.O., <br />
+                  Mumbai, Maharashtra, India, 400001
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-accent-primary flex-shrink-0" />
+                {/* <Phone className="w-5 h-5 text-accent-primary flex-shrink-0" />
                 <a href="tel:+1-800-555-0199" className="text-text-muted-light hover:text-text-light transition-colors">
                   +1-800-555-0199
-                </a>
+                </a> */}
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent-primary flex-shrink-0" />
                 <a href="mailto:contact@firstcalladvisory.com" className="text-text-muted-light hover:text-text-light transition-colors">
-                  contact@firstcalladvisory.com
+                  info@fcadvisory.in
                 </a>
               </li>
             </ul>
@@ -105,8 +113,7 @@ const Footer = () => {
             </p>
             <div className="flex gap-2">
               <Input 
-                type="email" 
-                placeholder="Your email" 
+                  placeholder="Your email" 
                 className="bg-white/5 border-white/10 text-text-light placeholder:text-text-muted-light focus:border-primary flex-1 min-w-0"
               />
               <Button className="bg-primary hover:bg-primary/90 px-4 md:px-6 flex-shrink-0">

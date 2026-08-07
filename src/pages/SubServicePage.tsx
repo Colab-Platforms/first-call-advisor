@@ -41,26 +41,43 @@ const SubServicePage = () => {
         href: `/services/${service.slug}`,
       }}
       content={
-        <div className="space-y-16">
+        <div className="space-y-16 md:space-y-20">
           {/* Detailed Description */}
           <AnimatedSection animation="fadeInUp">
-            <section>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-6">
-                About {subService.title}
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {content.detailedDescription}
-              </p>
+            <section className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-background via-background to-primary/5 p-6 md:p-10 shadow-sm">
+              <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
+              <div className="absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-accent-primary/10 blur-3xl" />
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                  Overview
+                </div>
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mt-4 mb-5">
+                  About {subService.title}
+                </h2>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                  {content.detailedDescription}
+                </p>
+              </div>
             </section>
           </AnimatedSection>
 
           {/* Statistics */}
           {/* <AnimatedSection animation="fadeInUp" delay={200}>
-            <section className="bg-primary/5 rounded-2xl p-8">
-              <h3 className="text-xl font-serif font-semibold text-foreground mb-8 text-center">
-                Our Track Record
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <section className="rounded-2xl border border-primary/10 bg-gradient-to-r from-primary/5 via-background to-accent-primary/5 p-6 md:p-10">
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-8">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                    At A Glance
+                  </p>
+                  <h3 className="text-xl md:text-2xl font-serif font-semibold text-foreground mt-2">
+                    Our Track Record
+                  </h3>
+                </div>
+                <p className="text-sm text-muted-foreground max-w-md">
+                  Measurable outcomes backed by experience and repeatable execution.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                 {content.statistics.map((stat, index) => {
                   const StatIcon = statIcons[index % statIcons.length];
                   return (
@@ -69,14 +86,16 @@ const SubServicePage = () => {
                       animation="scaleIn"
                       delay={300 + index * 100}
                     >
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                          <StatIcon className="w-6 h-6 text-primary" />
+                      <div className="h-full rounded-xl border border-border bg-card/80 p-4 text-center shadow-sm">
+                        <div className="w-11 h-11 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                          <StatIcon className="w-5 h-5 text-primary" />
                         </div>
-                        <p className="text-3xl font-bold text-primary mb-1">
+                        <p className="text-2xl md:text-3xl font-bold text-foreground mb-1">
                           {stat.value}
                         </p>
-                        <p className="text-sm text-muted-foreground">{stat.label}</p>
+                        <p className="text-xs md:text-sm text-muted-foreground">
+                          {stat.label}
+                        </p>
                       </div>
                     </AnimatedSection>
                   );
@@ -88,9 +107,14 @@ const SubServicePage = () => {
           {/* Key Features */}
           <AnimatedSection animation="fadeInUp" delay={400}>
             <section>
-              <h3 className="text-xl font-serif font-semibold text-foreground mb-6">
-                What We Offer
-              </h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl md:text-2xl font-serif font-semibold text-foreground">
+                  What We Offer
+                </h3>
+                <span className="hidden md:inline-flex items-center gap-2 text-sm text-muted-foreground">
+                  Clear, compliant, and execution-ready
+                </span>
+              </div>
               <div className="grid md:grid-cols-2 gap-4">
                 {content.keyFeatures.map((feature, index) => (
                   <AnimatedSection
@@ -98,9 +122,16 @@ const SubServicePage = () => {
                     animation="fadeInLeft"
                     delay={500 + index * 100}
                   >
-                    <div className="flex items-start gap-3 p-4 bg-card rounded-lg border border-border hover:border-primary/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-foreground">{feature}</span>
+                    <div className="group flex items-start gap-3 p-4 md:p-5 bg-card rounded-xl border border-border hover:border-primary/30 hover:shadow-md transition-all">
+                      <span className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                        <CheckCircle className="w-4 h-4" />
+                      </span>
+                      <div>
+                        <p className="text-foreground font-medium">{feature}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Tailored to {subService.title.toLowerCase()} outcomes.
+                        </p>
+                      </div>
                     </div>
                   </AnimatedSection>
                 ))}
@@ -111,10 +142,15 @@ const SubServicePage = () => {
           {/* Why Choose Us & Our Process */}
           <section className="grid md:grid-cols-2 gap-8">
             <AnimatedSection animation="fadeInLeft" delay={600}>
-              <div className="bg-card p-6 rounded-lg border border-border">
-                <h3 className="text-lg font-semibold text-foreground mb-4">
-                  Why Choose Us
-                </h3>
+              <div className="bg-card p-6 md:p-7 rounded-xl border border-border shadow-sm">
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary font-semibold">
+                    A+
+                  </span>
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground">
+                    Why Choose Us
+                  </h3>
+                </div>
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start gap-3">
                     <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
@@ -137,10 +173,15 @@ const SubServicePage = () => {
             </AnimatedSection>
 
             <AnimatedSection animation="fadeInRight" delay={700}>
-              <div className="bg-card p-6 rounded-lg border border-border">
-                <h3 className="text-lg font-semibold text-foreground mb-4">
-                  Our Process
-                </h3>
+              <div className="bg-card p-6 md:p-7 rounded-xl border border-border shadow-sm">
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary font-semibold">
+                    4x
+                  </span>
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground">
+                    Our Process
+                  </h3>
+                </div>
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start gap-3">
                     <span className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center text-primary text-sm font-semibold flex-shrink-0">
@@ -174,9 +215,14 @@ const SubServicePage = () => {
           {/* Case Studies */}
           <AnimatedSection animation="fadeInUp" delay={800}>
             <section>
-              <h3 className="text-xl font-serif font-semibold text-foreground mb-6">
-                Case Studies
-              </h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl md:text-2xl font-serif font-semibold text-foreground">
+                  Case Studies
+                </h3>
+                <span className="text-sm text-muted-foreground hidden md:inline">
+                  Selected engagements across industries
+                </span>
+              </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {content.caseStudies.map((caseStudy, index) => (
                   <AnimatedSection
@@ -199,8 +245,8 @@ const SubServicePage = () => {
           {/* Related Services */}
           {service.subServices.length > 1 && (
             <AnimatedSection animation="fadeInUp" delay={1100}>
-              <section>
-                <h3 className="text-xl font-serif font-semibold text-foreground mb-4">
+              <section className="rounded-2xl border border-border bg-card/60 p-6 md:p-8">
+                <h3 className="text-xl md:text-2xl font-serif font-semibold text-foreground mb-4">
                   Related Services
                 </h3>
                 <div className="flex flex-wrap gap-3">
@@ -216,7 +262,7 @@ const SubServicePage = () => {
                       >
                         <a
                           href={`/services/${service.slug}/${relatedService.slug}`}
-                          className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium hover:bg-primary/20 transition-colors inline-block"
+                          className="px-4 py-2 bg-background text-foreground rounded-full text-sm font-medium border border-border hover:border-primary/40 hover:text-primary transition-colors inline-block"
                         >
                           {relatedService.title}
                         </a>

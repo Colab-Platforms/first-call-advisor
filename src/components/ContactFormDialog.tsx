@@ -10,6 +10,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { sendContactEmail } from '@/lib/emailjs';
 
 interface ContactFormDialogProps {
   open: boolean;
@@ -40,11 +41,12 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    console.log('Contact form submitted:', formData);
-    setIsSubmitted(true);
+  try {
+    await sendContactEmail(formData)
+    setIsSubmitted(true)
+  } catch (error) {
+    // now failure is a real possibility — show an error state
+  }
     setIsSubmitting(false);
   };
 
@@ -100,10 +102,10 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
                   <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
-                  <div>
+                  {/* <div>
                     <p className="font-semibold text-white">Call Us</p>
                     <p className="text-white/70">+1-800-555-0199</p>
-                  </div>
+                  </div> */}
                 </div>
                 
                 <div className="flex items-center gap-4">
@@ -112,7 +114,7 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
                   </div>
                   <div>
                     <p className="font-semibold text-white">Email Us</p>
-                    <p className="text-white/70">contact@firstcalladvisory.com</p>
+                    <p className="text-white/70">info@fcadvisory.in</p>
                   </div>
                 </div>
                 
@@ -122,7 +124,7 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
                   </div>
                   <div>
                     <p className="font-semibold text-white">Visit Us</p>
-                    <p className="text-white/70">Business District, Financial Center</p>
+                    <p className="text-white/70">25/25A, II nd Floor, 327, Nawab Bldg., D.N. Road, Opp. Thomas Cook, Mumbai G.P.O., Mumbai, Mumbai, Maharashtra, India, 400001</p>
                   </div>
                 </div>
               </div>

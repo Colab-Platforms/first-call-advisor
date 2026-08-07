@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ContactFormProvider } from "@/contexts/ContactFormContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import ServicePage from "./pages/ServicePage";
 import SubServicePage from "./pages/SubServicePage";
@@ -22,6 +23,7 @@ const App = () => (
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
             <Route path="/services/:serviceSlug" element={<ServicePage />} />
             <Route path="/services/:serviceSlug/:subServiceSlug" element={<SubServicePage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

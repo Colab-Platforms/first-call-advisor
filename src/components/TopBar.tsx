@@ -21,12 +21,12 @@ const TopBar = () => {
           {/* Email - hidden on mobile, truncated on tablet */}
           <a href="mailto:contact@firstcalladvisory.com" className="hidden sm:flex items-center gap-2 text-text-muted-light hover:text-text-light transition-colors text-xs md:text-sm">
             <Mail className="w-3.5 h-3.5 md:w-4 md:h-4 text-accent-primary" />
-            <span className="hidden lg:inline">contact@firstcalladvisory.com</span>
+            <span className="hidden lg:inline">info@fcadvisory.in</span>
             <span className="lg:hidden">Email Us</span>
           </a>
           
           {/* Social icons - fewer on mobile */}
-          <div className="flex items-center gap-3 md:gap-4">
+          {/* <div className="flex items-center gap-3 md:gap-4">
             <a href="#" className="text-text-muted-light hover:text-text-light transition-colors" aria-label="Facebook">
               <Facebook className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </a>
@@ -39,7 +39,7 @@ const TopBar = () => {
             <a href="#" className="hidden sm:block text-text-muted-light hover:text-text-light transition-colors" aria-label="Instagram">
               <Instagram className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
