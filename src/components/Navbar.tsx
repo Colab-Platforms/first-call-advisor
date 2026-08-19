@@ -28,32 +28,41 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-50 transition-all duration-300",
-        isScrolled || isMobileMenuOpen
-          ? "bg-hero-bg/98 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
+        "sticky top-0 z-50 transition-all duration-300 border-b",
+        isScrolled
+          ? "bg-white/95 text-slate-900 backdrop-blur-md shadow-md border-slate-200/80 py-1"
+          : "bg-hero-bg/95 text-white backdrop-blur-md shadow-lg border-white/10 py-2"
       )}
     >
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-3 md:py-4 bg-transparent">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-2 md:py-2.5">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-1 -ml-2 md:-ml-4 lg:-ml-6">
+          <Link to="/" className="flex items-center -ml-2 md:-ml-4 lg:-ml-6 group">
             {!logoError ? (
-              <img 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain max-w-none" 
-                src="/first-call-logo.jpeg" 
-                alt="First Call Advisory Logo"
-                onError={() => {
-                  console.log('Logo image failed to load, switching to text logo');
-                  setLogoError(true);
-                }}
-                onLoad={() => {
-                  console.log('Logo image loaded successfully');
-                }}
-              />
+              <div className="bg-white px-3 py-1.5 rounded-lg shadow-md border border-slate-200/60 transition-all duration-300 group-hover:scale-[1.02] flex items-center justify-center">
+                <img 
+                  className="h-8 md:h-9 lg:h-10 w-auto object-contain max-w-none" 
+                  src="https://res.cloudinary.com/dtupa1lfb/image/upload/v1786347975/First_Call_Advisory_Logo_1_e8w8nn.png" 
+                  alt="First Call Advisory Logo"
+                  onError={() => {
+                    console.log('Logo image failed to load, switching to text logo');
+                    setLogoError(true);
+                  }}
+                  onLoad={() => {
+                    console.log('Logo image loaded successfully');
+                  }}
+                />
+              </div>
             ) : (
-              <span className="text-xl md:text-2xl font-serif font-bold text-white tracking-tight">
-                FIRST<span className="text-accent">CALL</span>
+              <span className={cn(
+                "text-xl md:text-2xl font-serif font-bold tracking-tight flex items-baseline gap-1",
+                isScrolled ? "text-slate-900" : "text-white"
+              )}>
+                FIRST<span className="text-accent-gold">CALL</span>
+                <span className={cn(
+                  "text-xs uppercase tracking-widest font-sans font-normal ml-1",
+                  isScrolled ? "text-slate-600" : "text-white/80"
+                )}>ADVISORY</span>
               </span>
             )}
           </Link>
@@ -66,19 +75,37 @@ const Navbar = () => {
                   <>
                     <Link
                       to={`/services/${service.slug}`}
-                      className="bg-transparent text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1 rounded-md whitespace-nowrap"
+                      className={cn(
+                        "px-3 py-2 text-sm font-semibold transition-colors flex items-center gap-1 rounded-md whitespace-nowrap",
+                        isScrolled
+                          ? "text-slate-800 hover:text-accent-primary hover:bg-slate-100/80"
+                          : "text-white hover:text-accent-gold hover:bg-white/10"
+                      )}
                     >
                       {service.label}
-                      <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                      <ChevronDown className={cn(
+                        "w-3.5 h-3.5 transition-transform group-hover:rotate-180",
+                        isScrolled ? "text-slate-500" : "text-white/70"
+                      )} />
                     </Link>
                     {/* Dropdown */}
                     <div className="absolute top-full left-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                      <ul className="w-[300px] bg-hero-bg border border-white/10 rounded-md shadow-lg p-3 space-y-1">
+                      <ul className={cn(
+                        "w-[300px] border rounded-md shadow-2xl p-3 space-y-1",
+                        isScrolled
+                          ? "bg-white border-slate-200/90 text-slate-800"
+                          : "bg-hero-bg/98 backdrop-blur-lg border-white/15 text-white"
+                      )}>
                         {service.subServices.map((subService) => (
                           <li key={subService.slug}>
                             <Link
                               to={`/services/${service.slug}/${subService.slug}`}
-                              className="block select-none rounded-sm p-3 text-sm leading-none no-underline outline-none transition-colors text-white/70 hover:text-white hover:bg-white/10"
+                              className={cn(
+                                "block select-none rounded-sm p-3 text-sm font-medium leading-normal outline-none transition-colors",
+                                isScrolled
+                                  ? "text-slate-700 hover:text-accent-primary hover:bg-slate-100"
+                                  : "text-white/90 hover:text-white hover:bg-white/15"
+                              )}
                             >
                               {subService.title}
                             </Link>
@@ -90,7 +117,12 @@ const Navbar = () => {
                 ) : (
                   <Link
                     to={`/services/${service.slug}`}
-                    className="inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white whitespace-nowrap"
+                    className={cn(
+                      "inline-flex h-10 w-max items-center justify-center rounded-md px-3 py-2 text-sm font-semibold transition-colors whitespace-nowrap",
+                      isScrolled
+                        ? "text-slate-800 hover:text-accent-primary hover:bg-slate-100/80"
+                        : "text-white hover:text-accent-gold hover:bg-white/10"
+                    )}
                   >
                     {service.label}
                   </Link>
@@ -103,7 +135,7 @@ const Navbar = () => {
           <div className="hidden xl:block ml-8 lg:ml-12">
             <Button 
               onClick={openContactForm}
-              className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold px-6 py-2 whitespace-nowrap"
+              className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold px-6 py-2 shadow-md hover:shadow-lg transition-all whitespace-nowrap"
             >
               Get Consultation
             </Button>
@@ -111,8 +143,12 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="xl:hidden text-white p-2 hover:bg-white/10 rounded-md transition-colors"
+            className={cn(
+              "xl:hidden p-2 rounded-md transition-colors",
+              isScrolled ? "text-slate-800 hover:bg-slate-100" : "text-white hover:bg-white/10"
+            )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle navigation menu"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -124,7 +160,10 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden mt-6 pb-6 border-t border-white/10 pt-6 animate-fade-in">
+          <div className={cn(
+            "xl:hidden mt-4 pb-6 border-t pt-4 animate-fade-in",
+            isScrolled ? "border-slate-200" : "border-white/10"
+          )}>
             <div className="flex flex-col gap-1">
               {servicesData.map((service) => (
                 <div key={service.label}>
@@ -132,21 +171,30 @@ const Navbar = () => {
                     <>
                       <button
                         onClick={() => toggleMobileSubmenu(service.label)}
-                        className="flex items-center justify-between w-full py-3 px-4 text-white/80 hover:text-white hover:bg-white/10 transition-colors rounded-md"
+                        className={cn(
+                          "flex items-center justify-between w-full py-3 px-4 transition-colors rounded-md font-semibold",
+                          isScrolled
+                            ? "text-slate-800 hover:bg-slate-100"
+                            : "text-white hover:text-accent-gold hover:bg-white/10"
+                        )}
                       >
-                        <span className="font-medium">{service.label}</span>
+                        <span>{service.label}</span>
                         <ChevronDown
                           className={cn(
                             "w-4 h-4 transition-transform",
-                            openMobileSubmenu === service.label && "rotate-180"
+                            isScrolled ? "text-slate-500" : "text-white/70",
+                            openMobileSubmenu === service.label && "rotate-180 text-accent-primary"
                           )}
                         />
                       </button>
                       {openMobileSubmenu === service.label && (
-                        <div className="ml-4 border-l-2 border-accent-primary/30 pl-4 mt-2 mb-2 animate-fade-in">
+                        <div className={cn(
+                          "ml-4 border-l-2 pl-4 mt-2 mb-2 animate-fade-in space-y-1",
+                          isScrolled ? "border-accent-primary/60" : "border-accent-gold/50"
+                        )}>
                           <Link
                             to={`/services/${service.slug}`}
-                            className="block py-2 px-2 text-sm text-accent-primary font-medium hover:text-white transition-colors rounded"
+                            className="block py-2 px-2 text-sm text-accent-primary font-bold hover:underline transition-colors rounded"
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
                             View All {service.label}
@@ -155,7 +203,12 @@ const Navbar = () => {
                             <Link
                               key={subService.slug}
                               to={`/services/${service.slug}/${subService.slug}`}
-                              className="block py-2 px-2 text-sm text-white/60 hover:text-white hover:bg-white/5 transition-colors rounded"
+                              className={cn(
+                                "block py-2 px-2 text-sm transition-colors rounded font-medium",
+                                isScrolled
+                                  ? "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+                                  : "text-white/90 hover:text-white hover:bg-white/10"
+                              )}
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
                               {subService.title}
@@ -167,7 +220,12 @@ const Navbar = () => {
                   ) : (
                     <Link
                       to={`/services/${service.slug}`}
-                      className="block py-3 px-4 text-white/80 hover:text-white hover:bg-white/10 transition-colors rounded-md font-medium"
+                      className={cn(
+                        "block py-3 px-4 transition-colors rounded-md font-semibold",
+                        isScrolled
+                          ? "text-slate-800 hover:bg-slate-100"
+                          : "text-white hover:text-accent-gold hover:bg-white/10"
+                      )}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {service.label}
@@ -175,13 +233,13 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              <div className="mt-4 pt-4 border-t border-white/10">
+              <div className={cn("mt-4 pt-4 border-t", isScrolled ? "border-slate-200" : "border-white/10")}>
                 <Button 
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     openContactForm();
                   }}
-                  className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold w-full py-3"
+                  className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold w-full py-3 shadow-md"
                 >
                   Get Consultation
                 </Button>
