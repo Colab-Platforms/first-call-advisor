@@ -21,6 +21,9 @@ function getTransporter(): Transporter {
             pass: process.env.SMTP_PASS,
           }
         : undefined,
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 10_000,
     });
   }
   return transporter;

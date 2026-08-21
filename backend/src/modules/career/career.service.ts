@@ -4,7 +4,7 @@ import * as emailService from "../../services/email.service.js";
 import { getFileExtension } from "../../utils/fileSignature.js";
 import { CareerApplicationInput, SubmitApplicationResult, UploadedResumeFile } from "./career.types.js";
 
-export async function  submitApplication(
+export async function submitApplication(
   input: CareerApplicationInput,
   resumeFile: UploadedResumeFile,
 ): Promise<SubmitApplicationResult> {
@@ -33,11 +33,9 @@ export async function  submitApplication(
       select: { id: true },
     });
 
-    try {
-      await emailService.sendCareerApplicationNotification(input, uploadResult);
-    } catch (emailError) {
+    emailService.sendCareerApplicationNotification(input, uploadResult).catch((emailError) => {
       console.error("[Career] Failed to send HR notification email:", emailError);
-    }
+    });
 
     return { id: application.id };
   } catch (dbError) {
