@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Baseline roles for RBAC-style apps — extend or replace for your product.
+model Role {
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([name])
+}
+
+enum ApplicationStatus {
+  NEW
+  REVIEWING
+  SHORTLISTED
+  INTERVIEW
+  SELECTED
+  REJECTED
+}
+
+model CareerApplication {
+  id             Int               @id @default(autoincrement())
+  fullName       String
+  email          String
+  phone          String
+  reason         String
+  position       String?
+  resumeUrl      String
+  resumePublicId String
+  resumeFileName String
+  resumeFormat   String
+  resumeSize     Int
+  status         ApplicationStatus @default(NEW)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@index([position])
+}

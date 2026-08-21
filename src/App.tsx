@@ -7,6 +7,7 @@ import { ContactFormProvider } from "@/contexts/ContactFormContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
+import Career from "./pages/Career";
 import NotFound from "./pages/NotFound";
 import ServicePage from "./pages/ServicePage";
 import SubServicePage from "./pages/SubServicePage";
@@ -24,6 +25,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
+            <Route path="/career" element={<Career />} />
             <Route path="/services/:serviceSlug" element={<ServicePage />} />
             <Route path="/services/:serviceSlug/:subServiceSlug" element={<SubServicePage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

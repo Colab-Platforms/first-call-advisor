@@ -99,9 +99,9 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
               
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                  {/* <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
                     <Phone className="w-6 h-6 text-white" />
-                  </div>
+                  </div> */}
                   {/* <div>
                     <p className="font-semibold text-white">Call Us</p>
                     <p className="text-white/70">+1-800-555-0199</p>

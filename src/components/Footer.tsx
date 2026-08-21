@@ -20,8 +20,8 @@ const Footer = () => {
             <Link to="/" className="inline-block mb-6">
               {!logoError ? (
                 <img 
-                  className="h-10 md:h-12 w-auto object-contain max-w-none" 
-                  src="/first-call-logo.jpeg" 
+                  className="h-18 md:h-20 w-auto object-contain max-w-none" 
+                  src="https://res.cloudinary.com/dtupa1lfb/image/upload/v1787208901/First-Call-Advisory-Logo_1_wshhdg.png" 
                   alt="First Call Advisory Logo"
                   onError={() => {
                     console.log('Footer logo image failed to load, switching to text logo');
@@ -75,6 +75,11 @@ const Footer = () => {
                 <a href="#contact" className="text-text-muted-light hover:text-text-light hover:pl-2 transition-all">
                   Contact Us
                 </a>
+              </li>
+              <li>
+              <Link to="/career" className="text-text-muted-light hover:text-text-light hover:pl-2 transition-all">
+                  Careers
+                </Link>
               </li>
             </ul>
           </div>

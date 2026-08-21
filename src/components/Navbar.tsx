@@ -26,22 +26,22 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-md border-b border-slate-200 py-2.5 md:py-3">
+    <nav className="sticky top-0 z-50 bg-white shadow-sm border-b border-slate-200">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex h-[66px] items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center -ml-2 md:-ml-4 lg:-ml-6 group">
+          <Link
+            to="/"
+            className="flex items-center flex-shrink-0 group relative"
+          >
             {!logoError ? (
-              <img 
-                className="h-12 md:h-14 lg:h-16 w-auto object-contain max-w-none transition-transform duration-300 group-hover:scale-[1.02]" 
-                src="https://res.cloudinary.com/dtupa1lfb/image/upload/v1786347975/First_Call_Advisory_Logo_1_e8w8nn.png" 
+              <img
+                className="w-[185px] md:w-[195px] lg:w-[200px] h-auto object-contain block max-w-none transition-transform duration-300 group-hover:scale-[1.02]"
+                src="/first-call-logo-hd.png"
                 alt="First Call Advisory Logo"
                 onError={() => {
-                  console.log('Logo image failed to load, switching to text logo');
+                  console.log("Logo image failed to load, switching to text logo");
                   setLogoError(true);
-                }}
-                onLoad={() => {
-                  console.log('Logo image loaded successfully');
                 }}
               />
             ) : (
@@ -53,17 +53,17 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center gap-1 ml-8 lg:ml-12">
+          <div className="hidden xl:flex items-center gap-0.5 2xl:gap-1 ml-3 2xl:ml-5 flex-1 justify-center">
             {servicesData.map((service) => (
               <div key={service.label} className="relative group">
                 {service.subServices.length > 0 ? (
                   <>
                     <Link
                       to={`/services/${service.slug}`}
-                      className="px-3.5 py-2 text-sm font-semibold text-slate-900 hover:text-accent-primary hover:bg-slate-100/80 transition-colors flex items-center gap-1.5 rounded-md whitespace-nowrap"
+                      className="h-10 px-2 2xl:px-3 text-[13px] 2xl:text-sm font-semibold text-slate-900 hover:text-accent-primary hover:bg-slate-100/80 transition-colors flex items-center gap-1 rounded-md whitespace-nowrap"
                     >
                       {service.label}
-                      <ChevronDown className="w-3.5 h-3.5 text-slate-500 transition-transform group-hover:rotate-180 group-hover:text-accent-primary" />
+                      <ChevronDown className="w-3 h-3 text-slate-500 transition-transform group-hover:rotate-180 group-hover:text-accent-primary" />
                     </Link>
                     {/* Dropdown */}
                     <div className="absolute top-full left-0 mt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -84,7 +84,7 @@ const Navbar = () => {
                 ) : (
                   <Link
                     to={`/services/${service.slug}`}
-                    className="inline-flex h-10 w-max items-center justify-center rounded-md px-3.5 py-2 text-sm font-semibold text-slate-900 hover:text-accent-primary hover:bg-slate-100/80 transition-colors whitespace-nowrap"
+                    className="inline-flex h-10 w-max items-center justify-center rounded-md px-2 2xl:px-3 text-[13px] 2xl:text-sm font-semibold text-slate-900 hover:text-accent-primary hover:bg-slate-100/80 transition-colors whitespace-nowrap"
                   >
                     {service.label}
                   </Link>
@@ -94,12 +94,12 @@ const Navbar = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden xl:block ml-8 lg:ml-12">
-            <Button 
+          <div className="hidden xl:block ml-3 2xl:ml-5 shrink-0">
+            <Button
               onClick={openContactForm}
-              className="bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold px-6 py-2 shadow-md hover:shadow-lg transition-all whitespace-nowrap"
+              className="h-10 bg-accent-primary hover:bg-accent-primary-hover text-white font-semibold px-4 2xl:px-5 text-xs 2xl:text-sm shadow-md hover:shadow-lg transition-all whitespace-nowrap rounded-md"
             >
-              Get Consultation
+              Contact Us
             </Button>
           </div>
 
@@ -171,7 +171,7 @@ const Navbar = () => {
                 </div>
               ))}
               <div className="mt-4 pt-4 border-t border-slate-200">
-                <Button 
+                <Button
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     openContactForm();
